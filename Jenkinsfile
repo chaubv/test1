@@ -16,7 +16,7 @@ pipeline {
             }
 	   
          steps {
-		sh "docker build -t nginx_v1:test ."      
+		sh "docker build -t nginx_v1:$tag ."      
 
               }
        }
