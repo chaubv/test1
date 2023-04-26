@@ -1,13 +1,16 @@
 pipeline {
-   agent any
-   environment {
-      tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
-    }
+   agent none
+//   environment {
+//      tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+//    }
    stages {
       stage('Build Image') {
 	     when {
              branch 'main'
             }
+       environment {
+      tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+    }	      
          agent {
              node {
                   label 'dev-k8s'
