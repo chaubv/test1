@@ -5,17 +5,17 @@ pipeline {
 	     when {
              branch 'main'
             }
-       environment {
-      tag = sh(returnStdout: true, script: "git rev-parse HEAD | cut -c1-7")
-    }	      
-         agent {
+      environment {
+        tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+      }	      
+      agent {
              node {
                   label 'dev-k8s'
                   customWorkspace '/home/ubuntu/jenkins/multi-branch/'
                 }
             }
 	   
-         steps {
+       steps {
 		  sh "docker build -t nginx:${tag} ."      
 
               }
