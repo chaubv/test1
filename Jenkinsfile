@@ -7,7 +7,7 @@ pipeline {
             }
          agent {
              node {
-                  label 'dev-aws'
+                  label 'dev-k8s'
                   customWorkspace '/home/ubuntu/jenkins/multi-branch/'
                 }
             }
