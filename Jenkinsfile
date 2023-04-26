@@ -12,7 +12,7 @@ pipeline {
                 }
             }
          steps {
-               sh "cd /home/ubuntu/jenkins/multi-branch/repo1 && docker build nginx_v1 ."
+               sh "docker build nginx_v1 ."
            }
        }
 	   
