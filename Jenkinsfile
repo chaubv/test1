@@ -6,7 +6,7 @@ pipeline {
              branch 'main'
             }
        environment {
-      tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
+      tag = sh(returnStdout: true, script: "git rev-parse HEAD | cut -c1-7")
     }	      
          agent {
              node {
@@ -16,7 +16,7 @@ pipeline {
             }
 	   
          steps {
-		sh "docker build -t nginx:$tag  ."      
+		sh "docker build -t nginx:$tag ."      
 
               }
        }
