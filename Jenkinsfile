@@ -20,7 +20,7 @@ pipeline {
                    env.tag==sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
                    sh "docker build -t nginx_v1 ."
                      
-                        }
+                        
                   }
               }
        }
