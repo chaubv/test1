@@ -2,7 +2,7 @@ pipeline {
    agent none
  //  environment {
  //     tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
-    }
+  //  }
    stages {
       stage('Build Image') {
 	     when {
