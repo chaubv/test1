@@ -14,12 +14,15 @@ pipeline {
                   customWorkspace '/home/ubuntu/jenkins/multi-branch/'
                 }
             }
-	 environment {
-             tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
-               }     
+	   
          steps {
-               sh "docker build -t nginx_v1 ."
-           }
+             script {
+                   if (env.tag==sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")){
+                       sh "docker build -t nginx_v1:${env.tag} ."
+                     
+                        }
+                  }
+              }
        }
 	   
       stage('Deploy Image') {
