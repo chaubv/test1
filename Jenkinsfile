@@ -12,7 +12,7 @@ pipeline {
                 }
             }
          steps {
-               sh "docker build nginx_v1 ."
+               sh "docker build -t nginx_v1 ."
            }
        }
 	   
