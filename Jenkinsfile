@@ -11,12 +11,12 @@ pipeline {
       agent {
              node {
                   label 'dev-k8s'
-                  customWorkspace '/home/ubuntu/jenkins/multi-branch/test'
+                  customWorkspace '/home/ubuntu/jenkins/multi-branch/'
                 }
             }
 	   
        steps {
-		  sh "docker build -t nginx:${tag} ."      
+		  sh "docker build -t nginx ."      
 
               }
        }
