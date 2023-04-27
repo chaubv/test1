@@ -16,7 +16,8 @@ pipeline {
             }
 	   
        steps {
-		  sh "docker build -t nginx ."      
+		  sh "docker build -t nginx ."
+	       sh "docker tag nginx:latest 198927737561.dkr.ecr.ap-southeast-1.amazonaws.com/abc-test:${tag}" 
 
               }
        }
