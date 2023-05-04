@@ -19,7 +19,7 @@ pipeline {
 	//	  sh "docker build -t nginx ."
 	//       sh "docker tag nginx:latest 198927737561.dkr.ecr.ap-southeast-1.amazonaws.com/abc-test:${tag}" 
 	       sh "sh scrip.sh"
-	       // sh "echo ${tag}abc"
+	       ///// sh "echo ${tag}abc"
 	       //sh "sed -i 's/dev/${tag}/g' test.yaml"
 
               }
