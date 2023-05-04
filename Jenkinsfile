@@ -16,11 +16,11 @@ pipeline {
             }
 	   
        steps {
-		  sh "docker build -t nginx ."
-	       sh "docker tag nginx:latest 198927737561.dkr.ecr.ap-southeast-1.amazonaws.com/abc-test:${tag}" 
-	       //sh "sed -i s@dev@490325a1a720e44bb35e3c1603da07efe9154e04@g test.yaml"
-	        sh "echo ${tag}abc"
-	       sh "sed -i 's/dev/${tag}/g' test.yaml"
+	//	  sh "docker build -t nginx ."
+	//       sh "docker tag nginx:latest 198927737561.dkr.ecr.ap-southeast-1.amazonaws.com/abc-test:${tag}" 
+	       sh "sh scrip.sh"
+	       // sh "echo ${tag}abc"
+	       //sh "sed -i 's/dev/${tag}/g' test.yaml"
 
               }
        }
