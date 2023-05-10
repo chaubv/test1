@@ -3,10 +3,8 @@ pipeline {
    stages {
       stage('Build Image') {
 	     when {
-             branch 'main'
-	      when {
+             branch 'main'	   
                 expression { params.stage == "14" }
-            }	     
             }
       environment {
         tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
