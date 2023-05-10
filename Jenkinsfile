@@ -2,8 +2,8 @@ pipeline {
    agent none
    stages {
       stage('Build Image') {
-	     when {
-             branch 'main'	   
+//	     when {
+//             branch 'main'	   
             }
       environment {
         tag = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2")
