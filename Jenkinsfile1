@@ -1,22 +1,51 @@
 pipeline { 
 
-    agent any
+    agent none
     parameters { 
-        choice(name: 'Version', choices:['1.1.0', '1.2.0', '1.3.0'], description:'')
+        choice choices: ['dev', 'stage', 'prod'],
+        	   description:'Choose the environment to deploy',
+			   name: 'appEnv'
     }
-    stages { 
+    stages{ 
 
-        stage('Init') { 
+        stage("Deploy to Dev") {
+             agent {
+             node {
+                  label 'dev-k8s'
+                  customWorkspace '/home/ubuntu/jenkins/multi-branch/'
+                }
+            }		
+		
+            when {
+			  expression {
+			     params.appEnv == "dev"
+			    }
+			}
+            steps{ 
 
-            steps { 
-
-                echo "Hello, this is build number ${BUILD_NUMBER}"
+                echo "deploy to dev"
             }
         }
-        stage("deploy"){ 
+        stage ("Deploy to stage"){ 
+		    when {
+			  expression {
+			    params.appEnv == "stage"
+			  }
+			  }
             steps{
-                echo "Deploying Version ${VERSION}"
+                echo "Deploying to stage"
             }
         }
-    }
+     
+	    stage("Deploy to prod"){ 
+		    when {
+			  expression {
+			   params.appEnv == "prod"
+			}
+			}
+            steps{
+                echo "Deploying to prod"
+            }
+        }
+ }
 }
