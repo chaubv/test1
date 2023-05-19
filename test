@@ -1,0 +1,45 @@
+pipeline { 
+
+    agent none
+    parameters {
+        choice(choices: ['dev', 'stage','prod '], description: 'Choose the environment to deploy', name: 'appEnv')
+        choice(choices: ['test2', 'test-13'], description: 'Choose the services name to deploy', name: 'appService')
+        string(name: 'appHash', description: 'Please input commitHash ID')
+    
+    }
+    stages{ 
+
+        stage("Deploy to Dev") {
+        
+            when {
+			  expression {
+			     params.appEnv == "dev"
+			    }
+			}
+            steps{ 
+                echo "deploy to dev"
+            }
+        }
+        stage ("Deploy to stage"){ 
+		    when {
+			  expression {
+			    params.appEnv == "stage"
+			  }
+			  }
+            steps{
+                echo "Deploying to stage"
+            }
+        }
+     
+	    stage ("Deploy to prod"){ 
+		    when {
+			  expression {
+			   params.appEnv == "prod"
+			}
+			}
+            steps{
+                echo "Deploying to prod"
+            }
+        }
+ }
+}
