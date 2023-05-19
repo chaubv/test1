@@ -1,0 +1,56 @@
+pipeline { 
+
+    agent none
+    parameters {
+        choice(choices: ['dev', 'stage','prod '], description: 'Choose the environment to deploy', name: 'appEnv')
+        choice(choices: ['test1', 'test-1'], description: 'Choose the services name to deploy', name: 'appService')
+        string(name: 'appHash', description: 'Please input commitHash ID')
+    
+    }
+    stages{ 
+
+        stage("Deploy to Dev") {
+        
+            when {
+			  expression {
+			     params.appEnv == "dev"
+			    }
+			}
+            steps{ 
+                script {
+                if (params.appService == 'test1') {
+            
+                    echo "dev"
+                } else {
+                    scho "dev1"
+              }  
+            }
+                //sh "git clone https://github.com/chaubv/${params.appService}.git"
+                //sh "cd ${params.appService} && git checkout ${params.appHash}"
+                //echo "deploy to dev"
+                //echo "please $params.appService"
+            }
+        }
+        stage ("Deploy to stage"){ 
+		    when {
+			  expression {
+			    params.appEnv == "stage"
+			  }
+			  }
+            steps{
+                echo "Deploying to stage"
+            }
+        }
+     
+	    stage ("Deploy to prod"){ 
+		    when {
+			  expression {
+			   params.appEnv == "prod"
+			}
+			}
+            steps{
+                echo "Deploying to prod"
+            }
+        }
+ }
+}
