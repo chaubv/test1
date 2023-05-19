@@ -17,17 +17,17 @@ pipeline {
 			    }
 			}
             steps{ 
-                script {
-                if (params.appService == 'test1') {
+                //script {
+                //if (params.appService == 'test1') {
             
-                    echo "dev"
-                } else {
-                    scho "dev1"
-              }  
-            }
+                  //  echo "dev"
+                //} else {
+                 //   scho "dev1"
+              //}  
+            //}
                 //sh "git clone https://github.com/chaubv/${params.appService}.git"
                 //sh "cd ${params.appService} && git checkout ${params.appHash}"
-                //echo "deploy to dev"
+                echo "deploy to dev"
                 //echo "please $params.appService"
             }
         }
