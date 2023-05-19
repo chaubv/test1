@@ -2,9 +2,9 @@ pipeline {
 
     agent none
     parameters { 
-        choice choices: ['dev', 'stage', 'prod'],
-        	   description:'Choose the environment to deploy',
-			   name: 'appEnv'
+        choice choices: ['dev', 'stage', 'prod'], description:'Choose the environment to deploy', name: 'appEnv'
+	choice(choices: ['test1', 'test-1'], description: 'Choose the services name to deploy', name: 'appService')
+        string(name: 'appHash', description: 'Please input commitHash ID')
     }
     stages{ 
 
