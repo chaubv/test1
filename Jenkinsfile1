@@ -23,7 +23,7 @@ pipeline {
 			}
             steps{ 
 
-                echo "deploy to dev"
+                echo "deploy to $params.appEnv test"
 		sh "sh ./script.sh"
             }
         }
