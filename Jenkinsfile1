@@ -24,6 +24,7 @@ pipeline {
             steps{ 
 
                 echo "deploy to dev"
+		sh "sh ./script.sh"
             }
         }
         stage ("Deploy to stage"){ 
