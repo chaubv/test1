@@ -25,6 +25,8 @@ pipeline {
 
                 echo "deploy to $params.appEnv test"
 		sh "sh ./script.sh"
+		sh "sed -i s/env_ai/${params.appEnv}/g /home/ubuntu/jenkins/multi-branch/test.yaml"
+		
             }
         }
         stage ("Deploy to stage"){ 
