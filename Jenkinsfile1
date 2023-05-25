@@ -11,7 +11,7 @@ pipeline {
         stage("Deploy to Dev") {
              agent {
              node {
-                  label 'dev-k8s'
+                  label 'k8s'
                   customWorkspace '/home/ubuntu/jenkins/multi-branch/'
                 }
             }		
@@ -24,7 +24,9 @@ pipeline {
             steps{ 
 
                 echo "deploy to $params.appEnv test"
-		sh "sed -i s/env_ai/${params.appEnv}/g /home/ubuntu/jenkins/multi-branch/chau.yaml"
+		sh "sed -i s/env_temp/${params.appEnv}/g /home/ubuntu/jenkins/multi-branch/script.sh.bak"
+		sh "sed -i s/service/${params.appService}/g /home/ubuntu/jenkins/multi-branch/script.sh.bak"
+		sh "sh ./script.sh.bak"
 		
             }
         }
