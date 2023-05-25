@@ -34,6 +34,7 @@ pipeline {
 			  }
             steps{
                 echo "Deploying to stage"
+		sh "sh ./script.sh"
             }
         }
      
