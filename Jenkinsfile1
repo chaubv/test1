@@ -24,8 +24,8 @@ pipeline {
             steps{ 
 
                 echo "deploy to $params.appEnv test"
-		sh "sed -i s/env_temp/${params.appEnv}/g /home/ubuntu/jenkins/multi-branch/script.sh.bak"
-		sh "sed -i s/service/${params.appService}/g /home/ubuntu/jenkins/multi-branch/script.sh.bak"
+		sh "sed -i s/env_temp/${params.appEnv}/g /home/ubuntu/jenkins/multi-branch/script.sh"
+		sh "sed -i s/service/${params.appService}/g /home/ubuntu/jenkins/multi-branch/script.sh"
 		sh "sh ./script.sh.bak"
 		
             }
